@@ -1,5 +1,5 @@
 import cv2
-from select_image_dialog import select_dialog
+from dialogs import select_dialog
 
 
 def detect_people_old(image_path):

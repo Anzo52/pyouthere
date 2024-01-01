@@ -3,7 +3,7 @@
 from detect_batch import detect_in_dir
 import os
 import shutil
-from select_image_dialog import select_dialog
+from dialogs import select_dialog
 
 
 def make_directory(dir_path, dir_name):

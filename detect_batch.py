@@ -1,6 +1,6 @@
 from detect_people import detect_people
 import os
-from select_image_dialog import select_dialog
+from dialogs import select_dialog
 
 
 def detect_in_dir(dir_path):
