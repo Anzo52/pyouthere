@@ -3,7 +3,7 @@
 from detect_batch import detect_in_dir
 import os
 import shutil
-from select_image_dialog import file_dialog
+from select_image_dialog import select_dialog
 
 
 def make_directory(dir_path, dir_name):
@@ -19,7 +19,7 @@ def move_files(file_list, dir_path):
 
 
 def main():
-    dir_path = file_dialog()
+    dir_path = select_dialog("directory")
     with_people, no_people = detect_in_dir(dir_path)
     directories = {
         "with_people": with_people,

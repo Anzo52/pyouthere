@@ -1,5 +1,5 @@
 import cv2
-from select_image_dialog import select_image_dialog
+from select_image_dialog import select_dialog
 
 
 def detect_people_old(image_path):
@@ -34,7 +34,7 @@ def detect_people(image_path):
 
 
 def main():
-    image_path = select_image_dialog()
+    image_path = select_dialog()
     if detect_people(image_path):
         print("People detected")
     else:

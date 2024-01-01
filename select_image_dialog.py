@@ -2,11 +2,6 @@ from tkinter import Tk
 from tkinter.filedialog import askopenfilename, askdirectory
 
 
-def select_image_dialog():
+def select_dialog(dialog_type="openfile"):
     Tk().withdraw()
-    return askopenfilename()
-
-
-def file_dialog():
-    Tk().withdraw()
-    return askdirectory()
+    return askopenfilename() if dialog_type == "openfile" else askdirectory()
