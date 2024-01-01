@@ -1,6 +1,6 @@
 # script to organize images into folders based on return from detect_batch.py
 
-from detect_batch import detect_in_dir
+from detectors import detect_in_dir
 import os
 import shutil
 from dialogs import select_dialog

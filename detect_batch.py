@@ -1,23 +1,5 @@
-from detect_people import detect_people
-import os
+from detectors import detect_in_dir
 from dialogs import select_dialog
-
-
-def detect_in_dir(dir_path):
-    file_paths = []
-    with_people = []
-    no_people = []
-    for file_name in os.listdir(dir_path):
-        print(file_name)
-        file_paths.append(os.path.join(dir_path, file_name))
-    for file in file_paths:
-        if detect_people(file):
-            print(f"People detected in {file}")
-            with_people.append(file)
-        else:
-            print(f"No people detected in {file}")
-            no_people.append(file)
-    return with_people, no_people
 
 
 def main():
