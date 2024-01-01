@@ -1,6 +1,6 @@
 from detectors import detect_in_dir, detect_people
 from dialogs import select_dialog
-from organize import *
+from organize import to_org
 
 
 def print_file_count(with_people, no_people):
@@ -13,30 +13,32 @@ def dir_func():
     dir_path = select_dialog("opendir")
     with_people, no_people = detect_in_dir(dir_path)
     print_file_count(with_people, no_people)
-    print("Organize files?")
-    organize_my_files = input("y/n: ")
-    if organize_my_files == "y":
-        organize_files(with_people, no_people)
+    return with_people, no_people
+
+
+def main_menu():
+    options = ["1) Single file", "2) Directory", "3) Exit"]
+    print("\n".join(options))
+
+
+
+def get_actions():
+    return {
+        "1": lambda: select_dialog() and print("People detected")
+        if detect_people(select_dialog())
+        else print("No people detected"),
+        "2": lambda: to_org(*dir_func()),
+        "3": exit,
+    }
 
 
 def main():
-    print("1) Single file")
-    print("2) Directory")
-    print("3) Exit")
-    choice = input("Enter choice: ")
-    if choice == "1":
-        file_path = select_dialog()
-        if detect_people(file_path):
-            print("People detected")
-        else:
-            print("No people detected")
-    elif choice == "2":
-        dir_func()
-    elif choice == "3":
-        exit()
-    else:
-        print("Invalid choice")
-        main()
+    actions = get_actions()
+    while True:
+        main_menu()
+        choice = input("Enter choice: ")
+        action = actions.get(choice, lambda: print("Invalid choice"))
+        action()
 
 
 if __name__ == "__main__":
