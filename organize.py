@@ -6,20 +6,6 @@ import shutil
 from select_image_dialog import file_dialog
 
 
-def make_no_people_dir(dir_path):
-    no_people_dir = os.path.join(dir_path, "no_people")
-    if not os.path.exists(no_people_dir):
-        os.mkdir(no_people_dir)
-    return no_people_dir
-
-
-def make_with_people_dir(dir_path):
-    with_people_dir = os.path.join(dir_path, "with_people")
-    if not os.path.exists(with_people_dir):
-        os.mkdir(with_people_dir)
-    return with_people_dir
-
-
 def make_directory(dir_path, dir_name):
     directory = os.path.join(dir_path, dir_name)
     os.makedirs(directory, exist_ok=True)
