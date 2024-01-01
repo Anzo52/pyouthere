@@ -1,4 +1,6 @@
 import cv2
+from tkinter import Tk
+from tkinter.filedialog import askopenfilename
 
 
 def detect_people_old(image_path):
@@ -33,8 +35,6 @@ def detect_people(image_path):
 
 
 def select_image_dialog():
-    from tkinter import Tk
-    from tkinter.filedialog import askopenfilename
 
     Tk().withdraw()
     return askopenfilename()
