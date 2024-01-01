@@ -1,18 +1,8 @@
 import cv2
-from tkinter import Tk
-from tkinter.filedialog import askopenfilename
+from tkinter import Tk, filedialog
 
-
-def detect_people_old(image_path):
-    body_classifier = cv2.CascadeClassifier("haarcascade_fullbody.xml")
-    lower_body_classifier = cv2.CascadeClassifier("haarcascade_lowerbody.xml")
-    profile_face_classifier = cv2.CascadeClassifier("haarcascade_profileface.xml")
-    image = cv2.imread(image_path)
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    bodies = body_classifier.detectMultiScale(gray, 1.2, 3)
-    lower_bodies = lower_body_classifier.detectMultiScale(gray, 1.2, 3)
-    profile_faces = profile_face_classifier.detectMultiScale(gray, 1.2, 3)
-    return len(bodies) > 0 or len(lower_bodies) > 0 or len(profile_faces) > 0
+tk_instance = Tk()
+tk_instance.withdraw()
 
 
 def detect_features(classifier_path, image_path):
@@ -35,9 +25,7 @@ def detect_people(image_path):
 
 
 def select_image_dialog():
-
-    Tk().withdraw()
-    return askopenfilename()
+    return filedialog.askopenfilename()
 
 
 def main():
