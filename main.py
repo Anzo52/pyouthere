@@ -1,6 +1,6 @@
 from detectors import detect_in_dir, detect_people
 from dialogs import select_dialog
-from organize import make_directory, move_files
+from organize import *
 
 
 def print_file_count(with_people, no_people):
@@ -8,32 +8,36 @@ def print_file_count(with_people, no_people):
     print(f"{len(no_people)} Files without people: {no_people}")
     print(f"Total files: {len(with_people) + len(no_people)}")
 
-def detect_in_directory():
-    dir_path = select_dialog("directory")
+
+def dir_func():
+    dir_path = select_dialog("opendir")
     with_people, no_people = detect_in_dir(dir_path)
-    print(f"{len(with_people)} Files with people: {with_people}")
-    print(f"{len(no_people)} Files without people: {no_people}")
-    print(f"Total files: {len(with_people) + len(no_people)}")
+    print_file_count(with_people, no_people)
+    print("Organize files?")
+    organize_my_files = input("y/n: ")
+    if organize_my_files == "y":
+        organize_files(with_people, no_people)
 
 
-def detect_image():
-    image_path = select_dialog()
-    if detect_people(image_path):
-        print("People detected")
+def main():
+    print("1) Single file")
+    print("2) Directory")
+    print("3) Exit")
+    choice = input("Enter choice: ")
+    if choice == "1":
+        file_path = select_dialog()
+        if detect_people(file_path):
+            print("People detected")
+        else:
+            print("No people detected")
+    elif choice == "2":
+        dir_func()
+    elif choice == "3":
+        exit()
     else:
-        print("No people detected")
+        print("Invalid choice")
+        main()
 
 
-def organize():
-    dir_path = select_dialog("directory")
-    with_people, no_people = detect_in_dir(dir_path)
-    directories = {
-        "with_people": with_people,
-        "no_people": no_people,
-    }
-    for dir_name, files in directories.items():
-        target_dir = make_directory(dir_path, dir_name)
-        move_files(files, target_dir)
-    print(f"(len(with_people)) Files with people: {with_people}")
-    print(f"(len(no_people)) Files without people: {no_people}")
-    print(f"Total files: {len(with_people) + len(no_people)}")
+if __name__ == "__main__":
+    main()

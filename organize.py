@@ -14,3 +14,15 @@ def move_files(file_list, dir_path):
     for file in file_list:
         print(f"Moving {file} to {dir_path}")
         shutil.move(file, dir_path)
+
+
+def make_and_move(dir_path, dir_name, file_list):
+    directory = make_directory(dir_path, dir_name)
+    move_files(file_list, directory)
+
+
+def organize_files(with_people, no_people):
+    dir_path = os.path.dirname(with_people[0])
+    make_and_move(dir_path, "with_people", with_people)
+    make_and_move(dir_path, "no_people", no_people)
+    print("Done")
