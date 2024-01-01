@@ -1,5 +1,6 @@
 from detect_people import detect_people
 import os
+from select_image_dialog import file_dialog
 
 
 def detect_in_dir(dir_path):
@@ -17,14 +18,6 @@ def detect_in_dir(dir_path):
             print(f"No people detected in {file}")
             no_people.append(file)
     return with_people, no_people
-
-
-def file_dialog():
-    from tkinter import Tk
-    from tkinter.filedialog import askdirectory
-
-    Tk().withdraw()
-    return askdirectory()
 
 
 def main():

@@ -1,8 +1,9 @@
 # script to organize images into folders based on return from detect_batch.py
 
-from detect_batch import detect_in_dir, file_dialog
+from detect_batch import detect_in_dir
 import os
 import shutil
+from select_image_dialog import file_dialog
 
 
 def make_no_people_dir(dir_path):
