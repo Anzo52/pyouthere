@@ -13,18 +13,18 @@ def detect_people(image_path):
     return any(detect_features(c, image_path) for c in classifiers)
 
 
+
 def detect_in_dir(dir_path):
-    with_people = []
-    no_people = []
+    detection_results = {'with_people': [], 'no_people': []}
     for file_name in os.listdir(dir_path):
         file_path = os.path.join(dir_path, file_name)
         if detect_people(file_path):
             print(f"People detected in {file_path}")
-            with_people.append(file_path)
+            detection_results['with_people'].append(file_path)
         else:
             print(f"No people detected in {file_path}")
-            no_people.append(file_path)
-    return with_people, no_people
+            detection_results['no_people'].append(file_path)
+    return detection_results["with_people"], detection_results["no_people"]
 
 
 def detect_features(classifier_path, image_path):
