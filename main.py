@@ -3,23 +3,26 @@ from dialogs import select_dialog
 from organize import to_org
 
 
-def print_file_count(with_people, no_people):
-    print(f"{len(with_people)} Files with people: {with_people}")
-    print(f"{len(no_people)} Files without people: {no_people}")
+def print_files_and_count(with_people, no_people):
+    print("Files with people:")
+    print("\n".join(with_people))
+    print("Files without people:")
+    print("\n".join(no_people))
+    print(f"Files with people: {len(with_people)}")
+    print(f"Files without people: {len(no_people)}")
     print(f"Total files: {len(with_people) + len(no_people)}")
 
 
 def dir_func():
     dir_path = select_dialog("opendir")
     with_people, no_people = detect_in_dir(dir_path)
-    print_file_count(with_people, no_people)
+    print_files_and_count(with_people, no_people)
     return with_people, no_people
 
 
 def main_menu():
     options = ["1) Single file", "2) Directory", "3) Exit"]
     print("\n".join(options))
-
 
 
 def get_actions():
