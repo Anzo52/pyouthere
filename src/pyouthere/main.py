@@ -4,10 +4,6 @@ from pyouthere.organize import to_org
 
 
 def print_files_and_count(with_people, no_people):
-    print("Files with people:")
-    print("\n".join(with_people))
-    print("Files without people:")
-    print("\n".join(no_people))
     print(f"Files with people: {len(with_people)}")
     print(f"Files without people: {len(no_people)}")
     print(f"Total files: {len(with_people) + len(no_people)}")
