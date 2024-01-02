@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch
-from main import print_files_and_count, process_directory, select_dialog_and_detect_people
+from pyouthere. import print_files_and_count, process_directory, select_dialog_and_detect_people
 
 # Test for print_files_and_count function
 @pytest.mark.parametrize("with_people, no_people, expected_output", [
@@ -23,8 +23,8 @@ def test_print_files_and_count(capsys, with_people, no_people, expected_output):
     ("image_without_people.jpg", False, "No people detected"),
     ("non_existent_file.jpg", False, "No people detected"),
 ], ids=["happy-path-people-detected", "happy-path-no-people", "error-case-non-existent-file"])
-@patch("main.select_dialog")
-@patch("main.detect_people")
+@patch("pyouthere.main.select_dialog")
+@patch("pyouthere.main.detect_people")
 def test_select_dialog_and_detect_people(mock_detect_people, mock_select_dialog, capsys, file_path, detect_result, expected_output):
     # Arrange
     mock_select_dialog.return_value = file_path
@@ -45,9 +45,9 @@ def test_select_dialog_and_detect_people(mock_detect_people, mock_select_dialog,
     ("/empty/dir", [], [], True),
     ("/invalid/dir", [], [], False),
 ], ids=["happy-path-valid-dir", "edge-case-empty-dir", "error-case-invalid-dir"])
-@patch("main.select_dialog")
-@patch("main.detect_in_dir")
-@patch("main.to_org")
+@patch("pyouthere.main.select_dialog")
+@patch("pyouthere.main.detect_in_dir")
+@patch("pyouthere.main.to_org")
 def test_process_directory(mock_to_org, mock_detect_in_dir, mock_select_dialog, capsys, dir_path, with_people, no_people, expected_org_call):
     # Arrange
     mock_select_dialog.return_value = dir_path
