@@ -14,19 +14,16 @@ def detect_people(image_path):
 
 
 def detect_in_dir(dir_path):
-    file_paths = []
     with_people = []
     no_people = []
     for file_name in os.listdir(dir_path):
-        print(file_name)
-        file_paths.append(os.path.join(dir_path, file_name))
-    for file in file_paths:
-        if detect_people(file):
-            print(f"People detected in {file}")
-            with_people.append(file)
+        file_path = os.path.join(dir_path, file_name)
+        if detect_people(file_path):
+            print(f"People detected in {file_path}")
+            with_people.append(file_path)
         else:
-            print(f"No people detected in {file}")
-            no_people.append(file)
+            print(f"No people detected in {file_path}")
+            no_people.append(file_path)
     return with_people, no_people
 
 
