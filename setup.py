@@ -17,8 +17,8 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'pyyouthere=main:main',  # Change this line
-        ],
+            'pyou=pyouthere.__main__:main',
+            ],
     },
     classifiers=[
         'Programming Language :: Python :: 3',
