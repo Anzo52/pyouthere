@@ -13,32 +13,32 @@ def print_files_and_count(with_people, no_people):
     print(f"Total files: {len(with_people) + len(no_people)}")
 
 
-def dir_func():
+def process_directory():
     dir_path = select_dialog("opendir")
     with_people, no_people = detect_in_dir(dir_path)
     print_files_and_count(with_people, no_people)
-    return with_people, no_people
+    to_org(with_people, no_people)
 
 
-def main_menu():
-    options = ["1) Single file", "2) Directory", "3) Exit"]
-    print("\n".join(options))
 
 
-def get_actions():
-    return {
-        "1": lambda: select_dialog() and print("People detected")
-        if detect_people(select_dialog())
-        else print("No people detected"),
-        "2": lambda: to_org(*dir_func()),
-        "3": exit,
-    }
+def select_dialog_and_detect_people():
+    file_path = select_dialog()
+    if detect_people(file_path):
+        print("People detected")
+    else:
+        print("No people detected")
 
 
 def main():
-    actions = get_actions()
+    actions = {
+        "1": select_dialog_and_detect_people,
+        "2": process_directory,
+        "3": exit,
+    }
+    options = ["1) Single file", "2) Directory", "3) Exit"]
     while True:
-        main_menu()
+        print("\n".join(options))
         choice = input("Enter choice: ")
         action = actions.get(choice, lambda: print("Invalid choice"))
         action()
