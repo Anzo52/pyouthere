@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch
-from pyouthere.main import print_files_and_count, process_directory, select_dialog_and_detect_people
+from src.pyouthere.main import print_files_and_count, process_directory, select_dialog_and_detect_people
 
 # Test for print_files_and_count function
 @pytest.mark.parametrize("with_people, no_people, expected_output", [
