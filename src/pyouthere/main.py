@@ -1,6 +1,6 @@
-from detectors import detect_in_dir, detect_people
-from dialogs import select_dialog
-from organize import to_org
+from pyouthere.detectors import detect_in_dir, detect_people
+from pyouthere.dialogs import select_dialog
+from pyouthere.organize import to_org
 
 
 def print_files_and_count(with_people, no_people):
