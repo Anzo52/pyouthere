@@ -1,11 +1,8 @@
 import pytest
 from unittest.mock import patch
 from pytest import CaptureFixture
-from src.main import (
-    print_files_and_count,
-    process_directory,
-    select_dialog_and_detect_people,
-)
+
+from main import print_files_and_count, process_directory, select_dialog_and_detect_people
 
 
 @pytest.mark.parametrize(
@@ -48,10 +45,10 @@ def test_print_files_and_count(capsys: CaptureFixture[str], with_people, no_peop
     ],
     ids=["happy-path"],
 )
-@patch("src.main.select_dialog")
-@patch("src.main.detect_in_dir")
-@patch("src.main.to_org")
-@patch("src.main.print_files_and_count")
+@patch("main.select_dialog")
+@patch("main.detect_in_dir")
+@patch("main.to_org")
+@patch("main.print_files_and_count")
 def test_process_directory(
     mock_print_files_and_count,
     mock_to_org,
@@ -81,8 +78,8 @@ def test_process_directory(
     ],
     ids=["people-detected", "no-people-detected"],
 )
-@patch("src.main.select_dialog")
-@patch("src.main.detect_people")
+@patch("main.select_dialog")
+@patch("main.detect_people")
 def test_select_dialog_and_detect_people(
     mock_detect_people,
     mock_select_dialog,
