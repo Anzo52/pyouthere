@@ -2,7 +2,7 @@ import pytest
 from unittest.mock import patch
 from pytest import CaptureFixture
 
-from main import print_files_and_count, process_directory, select_dialog_and_detect_people
+from src.main import print_files_and_count, process_directory, select_dialog_and_detect_people
 
 
 @pytest.mark.parametrize(
