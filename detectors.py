@@ -4,11 +4,11 @@ import cv2
 
 def detect_people(image_path):
     classifiers = [
-        "haarcascade_fullbody.xml",
-        "haarcascade_lowerbody.xml",
-        "haarcascade_profileface.xml",
-        "haarcascade_frontalface_alt.xml",
-        "haarcascade_upperbody.xml",
+        "models/haarcascade_fullbody.xml",
+        "models/haarcascade_lowerbody.xml",
+        "models/haarcascade_profileface.xml",
+        "models/haarcascade_frontalface_alt.xml",
+        "models/haarcascade_upperbody.xml",
     ]
     return any(detect_features(c, image_path) for c in classifiers)
 
