@@ -15,9 +15,9 @@ pyouthere is a Python application that checks if a human is present in a picture
 
 The application requires the following Python packages:
 
-- numpy==1.26.2
-- opencv-python==4.9.0.80
-- simple-term-menu==1.6.4
+- numpy>=1.26.2
+- opencv-python>=4.9.0.80
+- simple-term-menu>=1.6.4
 
 These can be installed using the `requirements.txt` file.
 
