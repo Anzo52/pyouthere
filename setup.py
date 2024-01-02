@@ -17,7 +17,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'pyou=pyouthere.__main__:main',
+            'pyou=pyouthere.src.main:main',
             ],
     },
     classifiers=[
