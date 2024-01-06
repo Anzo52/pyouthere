@@ -1,0 +1,286 @@
+[
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "cv2",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "cv2",
+        "description": "cv2",
+        "detail": "cv2",
+        "documentation": {}
+    },
+    {
+        "label": "Tk",
+        "importPath": "tkinter",
+        "description": "tkinter",
+        "isExtraImport": true,
+        "detail": "tkinter",
+        "documentation": {}
+    },
+    {
+        "label": "askopenfilename",
+        "importPath": "tkinter.filedialog",
+        "description": "tkinter.filedialog",
+        "isExtraImport": true,
+        "detail": "tkinter.filedialog",
+        "documentation": {}
+    },
+    {
+        "label": "askdirectory",
+        "importPath": "tkinter.filedialog",
+        "description": "tkinter.filedialog",
+        "isExtraImport": true,
+        "detail": "tkinter.filedialog",
+        "documentation": {}
+    },
+    {
+        "label": "detect_in_dir",
+        "importPath": "pyouthere.detectors",
+        "description": "pyouthere.detectors",
+        "isExtraImport": true,
+        "detail": "pyouthere.detectors",
+        "documentation": {}
+    },
+    {
+        "label": "detect_people",
+        "importPath": "pyouthere.detectors",
+        "description": "pyouthere.detectors",
+        "isExtraImport": true,
+        "detail": "pyouthere.detectors",
+        "documentation": {}
+    },
+    {
+        "label": "select_dialog",
+        "importPath": "pyouthere.dialogs",
+        "description": "pyouthere.dialogs",
+        "isExtraImport": true,
+        "detail": "pyouthere.dialogs",
+        "documentation": {}
+    },
+    {
+        "label": "to_org",
+        "importPath": "pyouthere.organize",
+        "description": "pyouthere.organize",
+        "isExtraImport": true,
+        "detail": "pyouthere.organize",
+        "documentation": {}
+    },
+    {
+        "label": "shutil",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "shutil",
+        "description": "shutil",
+        "detail": "shutil",
+        "documentation": {}
+    },
+    {
+        "label": "pytest",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pytest",
+        "description": "pytest",
+        "detail": "pytest",
+        "documentation": {}
+    },
+    {
+        "label": "patch",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
+        "label": "print_files_and_count",
+        "importPath": "src.pyouthere.main",
+        "description": "src.pyouthere.main",
+        "isExtraImport": true,
+        "detail": "src.pyouthere.main",
+        "documentation": {}
+    },
+    {
+        "label": "process_directory",
+        "importPath": "src.pyouthere.main",
+        "description": "src.pyouthere.main",
+        "isExtraImport": true,
+        "detail": "src.pyouthere.main",
+        "documentation": {}
+    },
+    {
+        "label": "select_dialog_and_detect_people",
+        "importPath": "src.pyouthere.main",
+        "description": "src.pyouthere.main",
+        "isExtraImport": true,
+        "detail": "src.pyouthere.main",
+        "documentation": {}
+    },
+    {
+        "label": "setup",
+        "importPath": "setuptools",
+        "description": "setuptools",
+        "isExtraImport": true,
+        "detail": "setuptools",
+        "documentation": {}
+    },
+    {
+        "label": "find_packages",
+        "importPath": "setuptools",
+        "description": "setuptools",
+        "isExtraImport": true,
+        "detail": "setuptools",
+        "documentation": {}
+    },
+    {
+        "label": "detect_people",
+        "kind": 2,
+        "importPath": "src.pyouthere.detectors",
+        "description": "src.pyouthere.detectors",
+        "peekOfCode": "def detect_people(image_path):\n    classifiers = [\n        \"models/haarcascade_fullbody.xml\",\n        \"models/haarcascade_lowerbody.xml\",\n        \"models/haarcascade_profileface.xml\",\n        \"models/haarcascade_frontalface_alt.xml\",\n        \"models/haarcascade_upperbody.xml\",\n    ]\n    return any(detect_features(c, image_path) for c in classifiers)\ndef detect_in_dir(dir_path):",
+        "detail": "src.pyouthere.detectors",
+        "documentation": {}
+    },
+    {
+        "label": "detect_in_dir",
+        "kind": 2,
+        "importPath": "src.pyouthere.detectors",
+        "description": "src.pyouthere.detectors",
+        "peekOfCode": "def detect_in_dir(dir_path):\n    detection_results = {'with_people': [], 'no_people': []}\n    for file_name in os.listdir(dir_path):\n        file_path = os.path.join(dir_path, file_name)\n        if detect_people(file_path):\n            print(f\"People detected in {file_path}\")\n            detection_results['with_people'].append(file_path)\n        else:\n            print(f\"No people detected in {file_path}\")\n            detection_results['no_people'].append(file_path)",
+        "detail": "src.pyouthere.detectors",
+        "documentation": {}
+    },
+    {
+        "label": "detect_features",
+        "kind": 2,
+        "importPath": "src.pyouthere.detectors",
+        "description": "src.pyouthere.detectors",
+        "peekOfCode": "def detect_features(classifier_path, image_path):\n    classifier = cv2.CascadeClassifier(classifier_path)\n    image = cv2.imread(image_path)\n    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)\n    features = classifier.detectMultiScale(gray, 1.2, 3)\n    return len(features) > 0",
+        "detail": "src.pyouthere.detectors",
+        "documentation": {}
+    },
+    {
+        "label": "select_dialog",
+        "kind": 2,
+        "importPath": "src.pyouthere.dialogs",
+        "description": "src.pyouthere.dialogs",
+        "peekOfCode": "def select_dialog(dialog_type=\"openfile\"):\n    Tk().withdraw()\n    return askopenfilename() if dialog_type == \"openfile\" else askdirectory()",
+        "detail": "src.pyouthere.dialogs",
+        "documentation": {}
+    },
+    {
+        "label": "print_files_and_count",
+        "kind": 2,
+        "importPath": "src.pyouthere.main",
+        "description": "src.pyouthere.main",
+        "peekOfCode": "def print_files_and_count(with_people, no_people):\n    print(f\"Files with people: {len(with_people)}\")\n    print(f\"Files without people: {len(no_people)}\")\n    print(f\"Total files: {len(with_people) + len(no_people)}\")\ndef process_directory():\n    dir_path = select_dialog(\"opendir\")\n    with_people, no_people = detect_in_dir(dir_path)\n    to_org(with_people, no_people)\n    print_files_and_count(with_people, no_people)\ndef select_dialog_and_detect_people():",
+        "detail": "src.pyouthere.main",
+        "documentation": {}
+    },
+    {
+        "label": "process_directory",
+        "kind": 2,
+        "importPath": "src.pyouthere.main",
+        "description": "src.pyouthere.main",
+        "peekOfCode": "def process_directory():\n    dir_path = select_dialog(\"opendir\")\n    with_people, no_people = detect_in_dir(dir_path)\n    to_org(with_people, no_people)\n    print_files_and_count(with_people, no_people)\ndef select_dialog_and_detect_people():\n    file_path = select_dialog()\n    if detect_people(file_path):\n        print(\"People detected\")\n    else:",
+        "detail": "src.pyouthere.main",
+        "documentation": {}
+    },
+    {
+        "label": "select_dialog_and_detect_people",
+        "kind": 2,
+        "importPath": "src.pyouthere.main",
+        "description": "src.pyouthere.main",
+        "peekOfCode": "def select_dialog_and_detect_people():\n    file_path = select_dialog()\n    if detect_people(file_path):\n        print(\"People detected\")\n    else:\n        print(\"No people detected\")\ndef main():\n    actions = {\n        \"1\": select_dialog_and_detect_people,\n        \"2\": process_directory,",
+        "detail": "src.pyouthere.main",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "src.pyouthere.main",
+        "description": "src.pyouthere.main",
+        "peekOfCode": "def main():\n    actions = {\n        \"1\": select_dialog_and_detect_people,\n        \"2\": process_directory,\n        \"3\": exit,\n    }\n    options = [\"1) Single file\", \"2) Directory\", \"3) Exit\"]\n    while True:\n        print(\"\\n\".join(options))\n        choice = input(\"Enter choice: \")",
+        "detail": "src.pyouthere.main",
+        "documentation": {}
+    },
+    {
+        "label": "make_directory",
+        "kind": 2,
+        "importPath": "src.pyouthere.organize",
+        "description": "src.pyouthere.organize",
+        "peekOfCode": "def make_directory(dir_path, dir_name):\n    directory = os.path.join(dir_path, dir_name)\n    os.makedirs(directory, exist_ok=True)\n    return directory\ndef move_files(file_list, dir_path):\n    for file in file_list:\n        print(f\"Moving {file} to {dir_path}\")\n        shutil.move(file, dir_path)\ndef make_and_move(dir_path, dir_name, file_list):\n    directory = make_directory(dir_path, dir_name)",
+        "detail": "src.pyouthere.organize",
+        "documentation": {}
+    },
+    {
+        "label": "move_files",
+        "kind": 2,
+        "importPath": "src.pyouthere.organize",
+        "description": "src.pyouthere.organize",
+        "peekOfCode": "def move_files(file_list, dir_path):\n    for file in file_list:\n        print(f\"Moving {file} to {dir_path}\")\n        shutil.move(file, dir_path)\ndef make_and_move(dir_path, dir_name, file_list):\n    directory = make_directory(dir_path, dir_name)\n    move_files(file_list, directory)\ndef organize_files(with_people, no_people):\n    dir_path = os.path.dirname(with_people[0])\n    make_and_move(dir_path, \"with_people\", with_people)",
+        "detail": "src.pyouthere.organize",
+        "documentation": {}
+    },
+    {
+        "label": "make_and_move",
+        "kind": 2,
+        "importPath": "src.pyouthere.organize",
+        "description": "src.pyouthere.organize",
+        "peekOfCode": "def make_and_move(dir_path, dir_name, file_list):\n    directory = make_directory(dir_path, dir_name)\n    move_files(file_list, directory)\ndef organize_files(with_people, no_people):\n    dir_path = os.path.dirname(with_people[0])\n    make_and_move(dir_path, \"with_people\", with_people)\n    make_and_move(dir_path, \"no_people\", no_people)\n    print(\"Done\")\ndef to_org(with_people, no_people):\n    print(\"Organize files?\")",
+        "detail": "src.pyouthere.organize",
+        "documentation": {}
+    },
+    {
+        "label": "organize_files",
+        "kind": 2,
+        "importPath": "src.pyouthere.organize",
+        "description": "src.pyouthere.organize",
+        "peekOfCode": "def organize_files(with_people, no_people):\n    dir_path = os.path.dirname(with_people[0])\n    make_and_move(dir_path, \"with_people\", with_people)\n    make_and_move(dir_path, \"no_people\", no_people)\n    print(\"Done\")\ndef to_org(with_people, no_people):\n    print(\"Organize files?\")\n    organize_my_files = input(\"y/n: \")\n    if organize_my_files == \"y\":\n        organize_files(with_people, no_people)",
+        "detail": "src.pyouthere.organize",
+        "documentation": {}
+    },
+    {
+        "label": "to_org",
+        "kind": 2,
+        "importPath": "src.pyouthere.organize",
+        "description": "src.pyouthere.organize",
+        "peekOfCode": "def to_org(with_people, no_people):\n    print(\"Organize files?\")\n    organize_my_files = input(\"y/n: \")\n    if organize_my_files == \"y\":\n        organize_files(with_people, no_people)\n    else:\n        print(\"Files not organized\")",
+        "detail": "src.pyouthere.organize",
+        "documentation": {}
+    },
+    {
+        "label": "test_print_files_and_count",
+        "kind": 2,
+        "importPath": "tests.test_main",
+        "description": "tests.test_main",
+        "peekOfCode": "def test_print_files_and_count(capsys, with_people, no_people, expected_output):\n    # Act\n    print_files_and_count(with_people, no_people)\n    captured = capsys.readouterr()\n    # Assert\n    expected_output = captured.out.strip()\n    assert captured.out.strip() == expected_output\n# Test for select_dialog_and_detect_people function\n@pytest.mark.parametrize(\"file_path, detect_result, expected_output\", [\n    (\"image_with_people.jpg\", True, \"People detected\"),",
+        "detail": "tests.test_main",
+        "documentation": {}
+    },
+    {
+        "label": "test_select_dialog_and_detect_people",
+        "kind": 2,
+        "importPath": "tests.test_main",
+        "description": "tests.test_main",
+        "peekOfCode": "def test_select_dialog_and_detect_people(mock_detect_people, mock_select_dialog, capsys, file_path, detect_result, expected_output):\n    # Arrange\n    mock_select_dialog.return_value = file_path\n    mock_detect_people.return_value = detect_result\n    # Act\n    select_dialog_and_detect_people()\n    captured = capsys.readouterr()\n    # Assert\n    assert captured.out.strip() == expected_output\n    mock_select_dialog.assert_called_once()",
+        "detail": "tests.test_main",
+        "documentation": {}
+    },
+    {
+        "label": "test_process_directory",
+        "kind": 2,
+        "importPath": "tests.test_main",
+        "description": "tests.test_main",
+        "peekOfCode": "def test_process_directory(mock_to_org, mock_detect_in_dir, mock_select_dialog, capsys, dir_path, with_people, no_people, expected_org_call):\n    # Arrange\n    mock_select_dialog.return_value = dir_path\n    mock_detect_in_dir.return_value = (with_people, no_people)\n    # Act\n    process_directory()\n    captured = capsys.readouterr()\n    # Assert\n    expected_output = captured.out.strip()\n    assert captured.out.strip() == expected_output",
+        "detail": "tests.test_main",
+        "documentation": {}
+    }
+]
